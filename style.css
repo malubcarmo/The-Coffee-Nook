@@ -1,0 +1,105 @@
+/* Custom CSS for The Coffee Nook */
+:root {
+  --bs-brown: #6F4E37;
+}
+
+.text-brown {
+  color: var(--bs-brown);
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Fundo geral da seção */
+.section-bg {
+  background-color: #FFF8F3;
+}
+
+/* Cor de fundo dos cards */
+.bg-coffee-light {
+  background-color: #FCEBDF;
+}
+
+/* Cor do texto principal e dos cards */
+.text-coffee {
+  color: #5C2B1F;
+}
+
+
+.about .card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+.about .lead {
+  margin-bottom: 1rem;
+}
+
+.coffee-card {
+  background-color: #f7e3d6;       /* Cor do fundo conforme imagem */
+  border: 3px solid #5C2B1F;       /* Cor da borda escura (tom café) */
+  border-radius: 1rem;             /* rounded-4 */
+  padding: 2rem;                   /* p-4 */
+  color: #5C2B1F;                  /* Texto em tom café */
+}
+
+#Banner {
+  margin-top: -5rem;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner img {
+  object-fit: cover;
+  height: 100%;
+  min-height: 400px;
+}
+
+.banner button {
+  transition: all 0.3s ease;
+  margin-top: 20em;
+  margin-left: 80vh;
+}
+
+.banner button:hover {
+  transform: scale(1.05);
+}
+
+.borda-marrom {
+  border-color: #532f20 !important; /* ou a cor que você estiver usando no tema */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+      text-align: center;
+  }
+  
+  header .d-flex {
+      flex-direction: column;
+  }
+  
+  .nav {
+      margin-top: 1rem;
+  }
+  
+  .banner img {
+      width: 50vh;
+  }
+}
+
+/* Animation for menu items */
+.menu-item {
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
