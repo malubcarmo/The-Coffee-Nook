@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantidades = [];
     if (isset($_POST['quantidade_cafe_espresso'])) $quantidades['Café Espresso'] = filter_input(INPUT_POST, 'quantidade_cafe_espresso', FILTER_SANITIZE_NUMBER_INT);
     if (isset($_POST['quantidade_cappuccino'])) $quantidades['Cappuccino'] = filter_input(INPUT_POST, 'quantidade_cappuccino', FILTER_SANITIZE_NUMBER_INT);
-    if (isset($_POST['quantidade_pao_queijo'])) $quantidades['Pão de Queijo'] = filter_input(INPUT_POST, 'quantidade_pao_queijo', FILTER_SANITIZE_NUMBER_INT);
+    if (isset($_POST['quantidade_cafe_gelado'])) $quantidades['Café Gelado'] = filter_input(INPUT_POST, 'quantidade_café_gelado', FILTER_SANITIZE_NUMBER_INT);
     $observacoes = filter_input(INPUT_POST, 'observacoes', FILTER_SANITIZE_STRING);
     $tipo_pedido = filter_input(INPUT_POST, 'tipo_pedido', FILTER_SANITIZE_STRING);
     $endereco_entrega = filter_input(INPUT_POST, 'endereco_entrega', FILTER_SANITIZE_STRING);
