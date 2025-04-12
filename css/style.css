@@ -65,11 +65,18 @@ section {
 .banner button {
   transition: all 0.3s ease;
   margin-top: 20em;
-  margin-left: 80vh;
+  margin-left: 70vh;
+  background-color: #532f20;
+  color: #f7e3d6;
+  border-color: #f7e3d6;
+
 }
 
 .banner button:hover {
   transform: scale(1.05);
+  color: #6F4E37;
+  background-color: #f7e3d6;
+  border-color: #532f20;
 }
 
 .borda-marrom {
