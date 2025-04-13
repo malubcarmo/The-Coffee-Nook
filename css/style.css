@@ -59,7 +59,6 @@ section {
 .banner img {
   object-fit: cover;
   height: 100%;
-  min-height: 400px;
 }
 
 .banner button {
@@ -110,3 +109,9 @@ section {
 .menu-item:hover {
   transform: translateY(-5px);
 }
+
+.ajuste-espaco {
+  padding-top: 40px;   /* reduz o espaço acima do título */
+  padding-bottom: 60px; /* mantém um bom espaço abaixo, se quiser ajustar mais é só mudar o valor */
+}
+
