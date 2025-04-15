@@ -40,7 +40,7 @@ section {
 }
 
 .coffee-card {
-  background-color: #f7e3d6;       /* Cor do fundo conforme imagem */
+  background-color: #f7e3d6;       /* Cor do fundo (imagem) */
   border: 3px solid #5C2B1F;       /* Cor da borda escura (tom café) */
   border-radius: 1rem;             /* rounded-4 */
   padding: 2rem;                   /* p-4 */
@@ -79,7 +79,7 @@ section {
 }
 
 .borda-marrom {
-  border-color: #532f20 !important; /* ou a cor que você estiver usando no tema */
+  border-color: #532f20 !important; 
 }
 
 /* Responsive adjustments */
@@ -110,8 +110,14 @@ section {
   transform: translateY(-5px);
 }
 
+/*ajuste para o título do cardápio */
 .ajuste-espaco {
-  padding-top: 40px;   /* reduz o espaço acima do título */
-  padding-bottom: 60px; /* mantém um bom espaço abaixo, se quiser ajustar mais é só mudar o valor */
+  padding-top: 40px;   
+  padding-bottom: 60px; 
+}
+
+/*ajuste para o footer */
+#equipe {
+  padding-bottom: 120px; 
 }
 
