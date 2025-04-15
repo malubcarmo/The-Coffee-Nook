@@ -27,29 +27,57 @@
   <main class="container py-5">
     <h2 class="text-center mb-5 fw-bold text-coffee">Monte seu pedido</h2>
 
-    <!-- Produtos -->
-    <div class="row mb-5">
-        <div class="col-md-4">
-            <h5 class="fw-semibold text-coffee">Cappuccino</h5>
-            <p>R$ <span id="preco1">12.00</span></p>
-            <input type="number" class="form-control mb-2" id="qtd1" min="0" max="10" value="0"/>
-            <p class="text-secondary">Total: R$ <span id="total1">0.00</span></p>
-          </div>         
-          <div class="col-md-4">
-            <h5 class="fw-semibold text-coffee">Expresso</h5>
-            <p>R$ <span id="preco2">9.00</span></p>
-            <input type="number" class="form-control mb-2" id="qtd2" min="0" max="10" value="0"/>
-            <p class="text-secondary">Total: R$ <span id="total2">0.00</span></p>
-          </div>
-          
-          <div class="col-md-4">
-            <h5 class="fw-semibold text-coffee">Café Gelado</h5>
-            <p>R$ <span id="preco3">14.00</span></p>
-            <input type="number" class="form-control mb-2" id="qtd3" min="0" max="10" value="0"/>
-            <p class="text-secondary">Total: R$ <span id="total3">0.00</span></p>
-          </div>
-          
-
+        <!-- Produtos -->
+    <div class="mb-5">
+        <!-- Item 1: Cappuccino -->
+        <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
+        <!-- Lado esquerdo: imagem + nome -->
+        <div class="d-flex align-items-center gap-3">
+            <img src="img/itens/cappuccino.jpg" alt="Cappuccino" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+            <div>
+            <h5 class="fw-semibold text-coffee mb-1">Cappuccino</h5>
+            <p class="mb-0">R$ <span id="preco1">12.00</span></p>
+            </div>
+        </div>
+    
+        <!-- Lado direito: quantidade + total -->
+        <div class="text-end">
+            <input type="number" class="form-control form-control-sm w-auto d-inline-block mb-1" id="qtd1" min="0" max="10" value="0">
+            <p class="text-secondary mb-0">Total: R$ <span id="total1">0.00</span></p>
+        </div>
+        </div>
+    
+        <!-- Item 2: Expresso -->
+        <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+            <img src="img/itens/item2.webp" alt="Expresso" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+            <div>
+            <h5 class="fw-semibold text-coffee mb-1">Expresso</h5>
+            <p class="mb-0">R$ <span id="preco2">9.00</span></p>
+            </div>
+        </div>
+        <div class="text-end">
+            <input type="number" class="form-control form-control-sm w-auto d-inline-block mb-1" id="qtd2" min="0" max="10" value="0">
+            <p class="text-secondary mb-0">Total: R$ <span id="total2">0.00</span></p>
+        </div>
+        </div>
+    
+        <!-- Item 3: Café Gelado -->
+        <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+            <img src="img/itens/item3.webp" alt="Café Gelado" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+            <div>
+            <h5 class="fw-semibold text-coffee mb-1">Café Gelado</h5>
+            <p class="mb-0">R$ <span id="preco3">14.00</span></p>
+            </div>
+        </div>
+        <div class="text-end">
+            <input type="number" class="form-control form-control-sm w-auto d-inline-block mb-1" id="qtd3" min="0" max="10" value="0">
+            <p class="text-secondary mb-0">Total: R$ <span id="total3">0.00</span></p>
+        </div>
+        </div>
+    </div>
+    
     <!-- Total -->
     <div class="mb-5">
       <h4 class="text-end text-coffee">Total: R$ <span id="total">0.00</span></h4>
