@@ -101,7 +101,26 @@ section {
   }
 }
 
-/* Animation for menu items */
+/* Aplica borda ao botão menu hambúrguer */
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler:hover {
+  border: 2px solid #3c1e0b;
+  box-shadow: 0 0 6px rgba(60, 30, 11, 0.4);
+}
+
+/* Animação dos itens no menu */
 .menu-item {
   transition: transform 0.3s ease;
 }
