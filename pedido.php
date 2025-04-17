@@ -134,74 +134,72 @@
     </div>
   </footer>
 
-  <!-- Substitua o <script> do final da sua página por este: -->
-<script>
-  const qtd1 = document.getElementById('qtd1');
-  const qtd2 = document.getElementById('qtd2');
-  const qtd3 = document.getElementById('qtd3');
-  const total = document.getElementById('total');
+      <!-- Script de calculo de quantidade, desconto e valor total -->
+    <script>
+      const qtd1 = document.getElementById('qtd1');
+      const qtd2 = document.getElementById('qtd2');
+      const qtd3 = document.getElementById('qtd3');
+      const total = document.getElementById('total');
 
-  const total1 = document.getElementById('total1');
-  const total2 = document.getElementById('total2');
-  const total3 = document.getElementById('total3');
-  const descontoText = document.getElementById('desconto');
-  const alerta = document.getElementById('alerta-cupom');
+      const total1 = document.getElementById('total1');
+      const total2 = document.getElementById('total2');
+      const total3 = document.getElementById('total3');
+      const descontoText = document.getElementById('desconto');
+      const alerta = document.getElementById('alerta-cupom');
 
-  let descontoCupom = 0;
+      let descontoCupom = 0;
 
-  function calcularTotal() {
-    const preco1 = 12.00;
-    const preco2 = 9.00;
-    const preco3 = 14.00;
+      function calcularTotal() {
+        const preco1 = 12.00;
+        const preco2 = 9.00;
+        const preco3 = 14.00;
 
-    const qtdExpresso = parseInt(qtd2.value || 0);
+        const qtdExpresso = parseInt(qtd2.value || 0);
 
-    const t1 = preco1 * parseInt(qtd1.value || 0);
-    const t2SemDesconto = preco2 * qtdExpresso;
-    const t3 = preco3 * parseInt(qtd3.value || 0);
+        const t1 = preco1 * parseInt(qtd1.value || 0);
+        const t2SemDesconto = preco2 * qtdExpresso;
+        const t3 = preco3 * parseInt(qtd3.value || 0);
 
-    const descontoAplicado = descontoCupom > 0 ? preco2 * descontoCupom * qtdExpresso : 0;
-    const t2 = t2SemDesconto - descontoAplicado;
+        const descontoAplicado = descontoCupom > 0 ? preco2 * descontoCupom * qtdExpresso : 0;
+        const t2 = t2SemDesconto - descontoAplicado;
 
-    total1.textContent = t1.toFixed(2);
-    total2.textContent = t2.toFixed(2);
-    total3.textContent = t3.toFixed(2);
+        total1.textContent = t1.toFixed(2);
+        total2.textContent = t2.toFixed(2);
+        total3.textContent = t3.toFixed(2);
 
-    const totalPedido = (t1 + t2 + t3).toFixed(2);
-    total.textContent = totalPedido;
+        const totalPedido = (t1 + t2 + t3).toFixed(2);
+        total.textContent = totalPedido;
 
-    descontoText.textContent = descontoAplicado > 0
-      ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
-      : '';
-  }
+        descontoText.textContent = descontoAplicado > 0
+          ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
+          : '';
+      }
 
-  function aplicarCupom() {
-    const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
+      function aplicarCupom() {
+        const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
 
-    if (valorCupom === "NOOK") {
-      descontoCupom = 0.7; // 70% de desconto no expresso
-      alerta.classList.remove("d-none"); // mostra o alerta de sucesso
-      alerta.classList.add("show");
+        if (valorCupom === "NOOK") {
+          descontoCupom = 0.7; // 70% de desconto no expresso
+          alerta.classList.remove("d-none"); // mostra o alerta de sucesso
+          alerta.classList.add("show");
 
-      // esconde o alerta automaticamente após 5 segundos
-      setTimeout(() => {
-        alerta.classList.add("d-none");
-        alerta.classList.remove("show");
-      }, 5000);
-    } else {
-      descontoCupom = 0;
-      descontoText.textContent = 'Cupom inválido.';
-      alerta.classList.add("d-none"); // esconde o alerta se inválido
-    }
+          // esconde o alerta automaticamente após 5 segundos
+          setTimeout(() => {
+            alerta.classList.add("d-none");
+            alerta.classList.remove("show");
+          }, 5000);
+        } else {
+          descontoCupom = 0;
+          descontoText.textContent = 'Cupom inválido.';
+          alerta.classList.add("d-none"); // esconde o alerta se inválido
+        }
 
-    calcularTotal();
-  }
+        calcularTotal();
+      }
 
-  qtd1.addEventListener('input', calcularTotal);
-  qtd2.addEventListener('input', calcularTotal);
-  qtd3.addEventListener('input', calcularTotal);
-</script>
-
-  
+      qtd1.addEventListener('input', calcularTotal);
+      qtd2.addEventListener('input', calcularTotal);
+      qtd3.addEventListener('input', calcularTotal);
+      </script> 
 </body>
 </html>
