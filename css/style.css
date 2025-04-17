@@ -121,3 +121,15 @@ section {
   padding-bottom: 120px; 
 }
 
+/*botão de finalizar pedido*/
+.btn-custom {
+  background-color: #532f20;
+  color: #f7e3d6;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #6F4E37;
+  color: #f7e3d6;
+}
+

@@ -33,7 +33,7 @@
         <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
         <!-- Lado esquerdo: imagem + nome -->
         <div class="d-flex align-items-center gap-3">
-            <img src="img/itens/cappuccino.jpg" alt="Cappuccino" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+            <img src="img/itens/item1.webp" alt="Cappuccino" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
             <div>
             <h5 class="fw-semibold text-coffee mb-1">Cappuccino</h5>
             <p class="mb-0">R$ <span id="preco1">12.00</span></p>
@@ -82,9 +82,24 @@
     <div class="mb-5">
       <h4 class="text-end text-coffee">Total: R$ <span id="total">0.00</span></h4>
     </div>
+    <!-- Cupom -->
+    <div class="mb-3 text-end">
+      <label for="cupom" class="form-label">Cupom de desconto:</label>
+      <input type="text" id="cupom" class="form-control d-inline-block w-auto" placeholder="Digite o cupom">
+      <button type="button" class="btn btn-outline-success ms-2" onclick="aplicarCupom()">Aplicar</button>
+    </div>
+    <!-- Valor do desconto -->
+    <div class="text-end text-success">
+      <span id="desconto"></span>
+    </div>
+    <div id="alerta-cupom" class="alert alert-success alert-dismissible fade show mt-3 d-none" role="alert">
+      <strong>Cupom aplicado com sucesso!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+    
 
     <!-- Formulário -->
-    <form>
+    <form method="POST" action="processar_pedido.php">
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="nome" class="form-label">Nome</label>
@@ -107,7 +122,7 @@
           <textarea class="form-control" id="obs" rows="3"></textarea>
         </div>
         <div class="text-end">
-          <button type="submit" class="btn btn-warning px-4 fw-bold">Finalizar Pedido</button>
+          <button type="submit" class="btn btn-custom px-4 fw-bold">Finalizar Pedido</button>
         </div>
       </div>
     </form>
@@ -119,36 +134,74 @@
     </div>
   </footer>
 
-  <script>
-    const qtd1 = document.getElementById('qtd1');
-    const qtd2 = document.getElementById('qtd2');
-    const qtd3 = document.getElementById('qtd3');
-    const total = document.getElementById('total');
-  
-    const total1 = document.getElementById('total1');
-    const total2 = document.getElementById('total2');
-    const total3 = document.getElementById('total3');
-  
-    function calcularTotal() {
-      const preco1 = 12.00;
-      const preco2 = 9.00;
-      const preco3 = 14.00;
-  
-      const t1 = preco1 * parseInt(qtd1.value || 0);
-      const t2 = preco2 * parseInt(qtd2.value || 0);
-      const t3 = preco3 * parseInt(qtd3.value || 0);
-  
-      total1.textContent = t1.toFixed(2);
-      total2.textContent = t2.toFixed(2);
-      total3.textContent = t3.toFixed(2);
-  
-      const totalPedido = (t1 + t2 + t3).toFixed(2);
-      total.textContent = totalPedido;
+  <!-- Substitua o <script> do final da sua página por este: -->
+<script>
+  const qtd1 = document.getElementById('qtd1');
+  const qtd2 = document.getElementById('qtd2');
+  const qtd3 = document.getElementById('qtd3');
+  const total = document.getElementById('total');
+
+  const total1 = document.getElementById('total1');
+  const total2 = document.getElementById('total2');
+  const total3 = document.getElementById('total3');
+  const descontoText = document.getElementById('desconto');
+  const alerta = document.getElementById('alerta-cupom');
+
+  let descontoCupom = 0;
+
+  function calcularTotal() {
+    const preco1 = 12.00;
+    const preco2 = 9.00;
+    const preco3 = 14.00;
+
+    const qtdExpresso = parseInt(qtd2.value || 0);
+
+    const t1 = preco1 * parseInt(qtd1.value || 0);
+    const t2SemDesconto = preco2 * qtdExpresso;
+    const t3 = preco3 * parseInt(qtd3.value || 0);
+
+    const descontoAplicado = descontoCupom > 0 ? preco2 * descontoCupom * qtdExpresso : 0;
+    const t2 = t2SemDesconto - descontoAplicado;
+
+    total1.textContent = t1.toFixed(2);
+    total2.textContent = t2.toFixed(2);
+    total3.textContent = t3.toFixed(2);
+
+    const totalPedido = (t1 + t2 + t3).toFixed(2);
+    total.textContent = totalPedido;
+
+    descontoText.textContent = descontoAplicado > 0
+      ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
+      : '';
+  }
+
+  function aplicarCupom() {
+    const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
+
+    if (valorCupom === "NOOK") {
+      descontoCupom = 0.7; // 70% de desconto no expresso
+      alerta.classList.remove("d-none"); // mostra o alerta de sucesso
+      alerta.classList.add("show");
+
+      // esconde o alerta automaticamente após 5 segundos
+      setTimeout(() => {
+        alerta.classList.add("d-none");
+        alerta.classList.remove("show");
+      }, 5000);
+    } else {
+      descontoCupom = 0;
+      descontoText.textContent = 'Cupom inválido.';
+      alerta.classList.add("d-none"); // esconde o alerta se inválido
     }
+
+    calcularTotal();
+  }
+
+  qtd1.addEventListener('input', calcularTotal);
+  qtd2.addEventListener('input', calcularTotal);
+  qtd3.addEventListener('input', calcularTotal);
+</script>
+
   
-    qtd1.addEventListener('input', calcularTotal);
-    qtd2.addEventListener('input', calcularTotal);
-    qtd3.addEventListener('input', calcularTotal);
-  </script>  
 </body>
 </html>
