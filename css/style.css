@@ -89,7 +89,9 @@ section {
   }
   
   header .d-flex {
-      flex-direction: column;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .nav {
@@ -152,3 +154,11 @@ section {
   color: #f7e3d6;
 }
 
+.collapsing {
+  transition: none !important;
+  height: auto !important;
+}
+
+.navbar-collapse {
+  transition: none !important;
+}
