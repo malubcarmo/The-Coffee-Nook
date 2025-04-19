@@ -45,19 +45,35 @@ section {
   color: #5C2B1F;
 }
 
-#Banner {
+/* Remove a margem negativa se não for mais necessária */
+.carousel {
   margin-top: -5rem;
 }
 
-.banner {
-  position: relative;
-  overflow: hidden;
+/* Mantém proporção responsiva */
+.carousel-inner {
+  width: 100%;
+  max-height: 80vh;
 }
 
-.banner img {
-  object-fit: cover;
-  height: 100%;
+/* Imagens responsivas */
+.carousel-item img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+  .carousel-inner {
+    max-height: 60vh;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    padding: 1rem !important;
+    background-size: 1rem;
+  }
 }
 
 .borda-marrom {
@@ -96,6 +112,11 @@ section {
 .ajuste-espaco {
   padding-top: 40px;
   padding-bottom: 60px;
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
 }
 
 /*ajuste para o footer */

@@ -59,14 +59,52 @@
     </div>
   </header> 
     <main>
-    <!-- Banner principal -->
-    <section class="banner position-relative" id="content">
-      <div class="container position-relative">
-        <img id="Banner" src="img/the-coffee-nook-banner.png" 
-            alt="Promoção especial: Café Expresso com 70% de desconto - Compre um e ganhe dois" 
-            class="img-fluid border rounded w-100">
+    <!-- Banner principal - Carousel com links diretos -->
+<section class="banner position-relative" id="content">
+  <div class="container position-relative">
+    <div id="bannerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
       </div>
-    </section>
+      
+      <!-- Slides com links diretos -->
+      <div class="carousel-inner rounded-3 overflow-hidden shadow-lg">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img src="img/the-coffee-nook-banner.png" 
+               class="d-block w-100" 
+               alt="Café especial da casa">
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="img/the-coffee-nook-banner.png"
+               class="d-block w-100" 
+               alt="Ambiente acolhedor">
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="img/the-coffee-nook-banner.png"
+               class="d-block w-100" 
+               alt="Nosso cardápio especial">
+        </div>
+      </div>
+      
+      <!-- Controles de navegação -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-brown rounded-circle p-3" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-brown rounded-circle p-3" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
         <!-- Cardapio -->
         <section class="about section-bg ajuste-espaco" id="offers">
           <div class="container">
@@ -81,7 +119,7 @@
             <div class="row g-4 justify-content-center">
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="card h-100 p-2 border-0 rounded-4 bg-coffee-light">
-                  <img src="img/cards/card1.webp" class="card-img-top rounded-3" alt="Cappuccino" style="height: 220px; object-fit: cover;">
+                  <img src="img/cards/card1.webp" class="card-img-top rounded-3" alt="Cappuccino">
                   <div class="card-body text-coffee">
                     <p class="card-text">
                       <strong>Cappuccino perfeito:</strong> uma deliciosa combinação de expresso, leite vaporizado cremoso e uma generosa camada de espuma aveludada.
@@ -91,7 +129,7 @@
               </div>       
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="card h-100 p-2 border-0 rounded-4 bg-coffee-light">
-                  <img src="img/cards/card2.webp" class="card-img-top rounded-3" alt="Expresso" style="height: 220px; object-fit: cover;">
+                  <img src="img/cards/card2.webp" class="card-img-top rounded-3" alt="Expresso">
                   <div class="card-body text-coffee">
                     <p class="card-text">
                       <strong>Expresso:</strong> Pequeno na dose, gigante no sabor. Seu shot diário de energia e aroma.
@@ -101,7 +139,7 @@
               </div>     
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="card h-100 p-2 border-0 rounded-4 bg-coffee-light">
-                  <img src="img/cards/card3.webp" class="card-img-top rounded-3" alt="Café Gelado" style="height: 220px; object-fit: cover;">
+                  <img src="img/cards/card3.webp" class="card-img-top rounded-3" alt="Café Gelado">
                   <div class="card-body text-coffee">
                     <p class="card-text">
                       <strong>Café gelado + Chocolate</strong> = Perfeição gelada! Experimente essa explosão de sabor refrescante.
