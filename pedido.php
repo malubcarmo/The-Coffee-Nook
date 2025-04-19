@@ -242,34 +242,31 @@
       cupomAplicado: descontoCupom > 0 ? '1' : '0',
       total: totalPedido
     };
-    fetch('processar_pedido.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        nome: nome,
-        telefone: telefone,
-        email: email,
-        endereco: endereco,
-        obs: observacoes,
-        qtd1: qtd1,
-        qtd2: qtd2,
-        qtd3: qtd3,
-        cupomAplicado: cupomAplicado
-    })
-    })
-    .then(response => response.json())
-    .then(data => {
+
+      fetch('processar_pedido.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(pedido),
+      })
+      .then(response => response.json())
+      .then(data => {
         if (data.success) {
-            console.log("Pedido salvo com sucesso!", data);
+          alert('Pedido realizado com sucesso!');
+          form.reset();
+          calcularTotal();
+          descontoText.textContent = '';
         } else {
-            console.log("Erro ao salvar pedido:", data.message);
+          alert('Erro ao processar o pedido.');
+          console.error(data.message);
         }
-    })
-    .catch(error => {
-        console.error('Erro ao enviar pedido:', error);
-    });
+      })
+      .catch(error => {
+        alert('Erro ao enviar o pedido.');
+        console.error(error);
+      });
+  });
 </script>
 </body>
 </html>
