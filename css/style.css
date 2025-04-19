@@ -72,6 +72,14 @@ section {
   font-size: 1.25rem;
 }
 
+.banner-button-container {
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+
 .banner button:hover {
   transform: scale(1.05);
   color: #6F4E37;
@@ -143,7 +151,15 @@ section {
   transition: none !important;
 }
 
-/* ===== MOBILE ADJUSTMENTS ===== */
+.custom-paragraph-width {
+  width: 80%; /* Ajuste a largura desejada */
+  max-width: 1000px; /* Limita a largura máxima do parágrafo */
+  margin-left: auto; /* Centraliza horizontalmente */
+  margin-right: auto; /* Centraliza horizontalmente */
+}
+
+
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   header {
     text-align: center;

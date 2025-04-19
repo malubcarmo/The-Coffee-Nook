@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pedido | The Coffee Nook</title>
-  <link rel="icon" type="img/logos/logo2.png" href="favicon.png"> <!-- Ícone na aba -->
+  <link rel="icon" type="image/png" href="img/logos/logo2.png"> <!-- Ícone na aba -->
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -31,102 +31,106 @@
         <!-- Produtos -->
     <div class="mb-5">
         <!-- Item 1: Cappuccino -->
-        <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
+    <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
         <!-- Lado esquerdo: imagem + nome -->
         <div class="d-flex align-items-center gap-3">
             <img src="img/itens/item1.webp" alt="Cappuccino" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
             <div>
-            <h5 class="fw-semibold text-coffee mb-1">Cappuccino</h5>
-            <p class="mb-0">R$ <span id="preco1">12.00</span></p>
+                <h5 class="fw-semibold text-coffee mb-1">Cappuccino</h5>
+                <p class="mb-0">R$ <span id="preco1">12,00</span></p>
             </div>
         </div>
-    
+
         <!-- Lado direito: quantidade + total -->
         <div class="text-end">
             <input type="number" class="form-control form-control-sm w-auto d-inline-block mb-1" id="qtd1" min="0" max="10" value="0">
-            <p class="text-secondary mb-0">Total: R$ <span id="total1">0.00</span></p>
+            <p class="text-secondary mb-0">Total: R$ <span id="total1">0,00</span></p>
+            <p class="text-warning mb-0">Limitado a 10 unidades.</p> <!-- Aviso de limite -->
         </div>
-        </div>
-    
-        <!-- Item 2: Expresso -->
-        <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
+    </div>
+    <!-- Item 2: Expresso -->
+    <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
             <img src="img/itens/item2.webp" alt="Expresso" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
             <div>
-            <h5 class="fw-semibold text-coffee mb-1">Expresso</h5>
-            <p class="mb-0">R$ <span id="preco2">9.00</span></p>
+                <h5 class="fw-semibold text-coffee mb-1">Expresso</h5>
+                <p class="mb-0">R$ <span id="preco2">9,00</span></p>
             </div>
         </div>
         <div class="text-end">
             <input type="number" class="form-control form-control-sm w-auto d-inline-block mb-1" id="qtd2" min="0" max="10" value="0">
-            <p class="text-secondary mb-0">Total: R$ <span id="total2">0.00</span></p>
+            <p class="text-secondary mb-0">Total: R$ <span id="total2">0,00</span></p>
+            <p class="text-warning mb-0">Limitado a 10 unidades.</p> <!-- Aviso de limite -->
         </div>
-        </div>
-    
-        <!-- Item 3: Café Gelado -->
-        <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
+    </div>
+    <!-- Item 3: Café Gelado -->
+    <div class="card mb-4 p-3 d-flex flex-row align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
             <img src="img/itens/item3.webp" alt="Café Gelado" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
             <div>
-            <h5 class="fw-semibold text-coffee mb-1">Café Gelado</h5>
-            <p class="mb-0">R$ <span id="preco3">14.00</span></p>
+                <h5 class="fw-semibold text-coffee mb-1">Café Gelado</h5>
+                <p class="mb-0">R$ <span id="preco3">14,00</span></p>
             </div>
         </div>
         <div class="text-end">
             <input type="number" class="form-control form-control-sm w-auto d-inline-block mb-1" id="qtd3" min="0" max="10" value="0">
-            <p class="text-secondary mb-0">Total: R$ <span id="total3">0.00</span></p>
+            <p class="text-secondary mb-0">Total: R$ <span id="total3">0,00</span></p>
+            <p class="text-warning mb-0">Limitado a 10 unidades.</p> <!-- Aviso de limite -->
         </div>
+    </div>   
+        <!-- Total -->
+          <div class="mb-5">
+            <h4 class="text-end text-coffee">Total: R$ <span id="total">0,00</span></h4>
+          </div>
+        <!-- Cupom -->
+          <div class="mb-3 text-end">
+            <label for="cupom" class="form-label">Cupom de desconto:</label>
+            <input type="text" id="cupom" class="form-control d-inline-block w-auto" placeholder="Digite o cupom">
+            <button type="button" class="btn btn-outline-success ms-2" onclick="aplicarCupom()">Aplicar</button>
+          </div>
+        <!-- Valor do desconto -->
+        <div class="text-end text-success">
+          <span id="desconto"></span>
         </div>
-    </div>
-    
-    <!-- Total -->
-    <div class="mb-5">
-      <h4 class="text-end text-coffee">Total: R$ <span id="total">0.00</span></h4>
-    </div>
-    <!-- Cupom -->
-    <div class="mb-3 text-end">
-      <label for="cupom" class="form-label">Cupom de desconto:</label>
-      <input type="text" id="cupom" class="form-control d-inline-block w-auto" placeholder="Digite o cupom">
-      <button type="button" class="btn btn-outline-success ms-2" onclick="aplicarCupom()">Aplicar</button>
-    </div>
-    <!-- Valor do desconto -->
-    <div class="text-end text-success">
-      <span id="desconto"></span>
-    </div>
-    <div id="alerta-cupom" class="alert alert-success alert-dismissible fade show mt-3 d-none" role="alert">
-      <strong>Cupom aplicado com sucesso!</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
-    </div>
-    
-
+        <div id="alerta-cupom" class="alert alert-success alert-dismissible fade show mt-3 d-none" role="alert">
+          <strong>Cupom aplicado com sucesso!</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+        
     <!-- Formulário -->
     <form method="POST" action="processar_pedido.php">
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" required />
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="telefone" class="form-label">Telefone</label>
-          <input type="tel" class="form-control" id="telefone" required />
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="email" class="form-label">E-mail</label>
-          <input type="email" class="form-control" id="email" required />
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="endereco" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="endereco" required />
-        </div>
-        <div class="col-12 mb-4">
-          <label for="obs" class="form-label">Observações</label>
-          <textarea class="form-control" id="obs" rows="3"></textarea>
-        </div>
-        <div class="text-end">
-          <button type="submit" class="btn btn-custom px-4 fw-bold">Finalizar Pedido</button>
-        </div>
-      </div>
-    </form>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="tel" class="form-control" id="telefone" name="telefone" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" name="email" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="endereco" class="form-label">Endereço</label>
+      <input type="text" class="form-control" id="endereco" name="endereco" required />
+    </div>
+    <div class="col-12 mb-4">
+      <label for="obs" class="form-label">Observações</label>
+      <textarea class="form-control" id="obs" name="obs" rows="3"></textarea>
+    </div>
+  <!-- Campos ocultos com as quantidades dos produtos -->
+    <input type="hidden" id="qtd1" name="qtd1" value="0">
+    <input type="hidden" id="qtd2" name="qtd2" value="0">
+    <input type="hidden" id="qtd3" name="qtd3" value="0">
+    <input type="hidden" id="cupomAplicado" name="cupomAplicado" value="0">
+    <div class="text-end">
+      <button type="submit" class="btn btn-custom px-4 fw-bold">Finalizar Pedido</button>
+    </div>
+  </div>
+</form>
+
   </main>
 
   <footer class="text-white py-3" style="background-color: #4a2314;">
@@ -136,71 +140,131 @@
   </footer>
 
       <!-- Script de calculo de quantidade, desconto e valor total -->
-    <script>
-      const qtd1 = document.getElementById('qtd1');
-      const qtd2 = document.getElementById('qtd2');
-      const qtd3 = document.getElementById('qtd3');
-      const total = document.getElementById('total');
+      <script>
+  const form = document.querySelector("form");
 
-      const total1 = document.getElementById('total1');
-      const total2 = document.getElementById('total2');
-      const total3 = document.getElementById('total3');
-      const descontoText = document.getElementById('desconto');
-      const alerta = document.getElementById('alerta-cupom');
+  const qtd1 = document.getElementById('qtd1');
+  const qtd2 = document.getElementById('qtd2');
+  const qtd3 = document.getElementById('qtd3');
+  const total = document.getElementById('total');
 
-      let descontoCupom = 0;
+  const total1 = document.getElementById('total1');
+  const total2 = document.getElementById('total2');
+  const total3 = document.getElementById('total3');
+  const descontoText = document.getElementById('desconto');
+  const alerta = document.getElementById('alerta-cupom');
 
-      function calcularTotal() {
-        const preco1 = 12.00;
-        const preco2 = 9.00;
-        const preco3 = 14.00;
+  let descontoCupom = 0;
 
-        const qtdExpresso = parseInt(qtd2.value || 0);
+  function calcularTotal() {
+    const preco1 = 12.00;
+    const preco2 = 9.00;
+    const preco3 = 14.00;
 
-        const t1 = preco1 * parseInt(qtd1.value || 0);
-        const t2SemDesconto = preco2 * qtdExpresso;
-        const t3 = preco3 * parseInt(qtd3.value || 0);
+    const qtdCappuccino = parseInt(qtd1.value || 0);
+    const qtdExpresso = parseInt(qtd2.value || 0);
+    const qtdCafeGelado = parseInt(qtd3.value || 0);
 
-        const descontoAplicado = descontoCupom > 0 ? preco2 * descontoCupom * qtdExpresso : 0;
-        const t2 = t2SemDesconto - descontoAplicado;
+    const t1 = preco1 * qtdCappuccino;
+    const t2SemDesconto = preco2 * qtdExpresso;
+    const t3 = preco3 * qtdCafeGelado;
 
-        total1.textContent = t1.toFixed(2);
-        total2.textContent = t2.toFixed(2);
-        total3.textContent = t3.toFixed(2);
+    const descontoAplicado = descontoCupom > 0 ? preco2 * descontoCupom * qtdExpresso : 0;
+    const t2 = t2SemDesconto - descontoAplicado;
 
-        const totalPedido = (t1 + t2 + t3).toFixed(2);
-        total.textContent = totalPedido;
+    total1.textContent = t1.toFixed(2);
+    total2.textContent = t2.toFixed(2);
+    total3.textContent = t3.toFixed(2);
 
-        descontoText.textContent = descontoAplicado > 0
-          ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
-          : '';
-      }
+    const totalPedido = (t1 + t2 + t3).toFixed(2);
+    total.textContent = totalPedido;
 
-      function aplicarCupom() {
-        const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
+    descontoText.textContent = descontoAplicado > 0
+      ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
+      : '';
+  }
 
-        if (valorCupom === "NOOK") {
-          descontoCupom = 0.7; // 70% de desconto no expresso
-          alerta.classList.remove("d-none"); // mostra o alerta de sucesso
-          alerta.classList.add("show");
+  function aplicarCupom() {
+    const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
 
-          // esconde o alerta automaticamente após 5 segundos
-          setTimeout(() => {
-            alerta.classList.add("d-none");
-            alerta.classList.remove("show");
-          }, 5000);
-        } else {
-          descontoCupom = 0;
-          descontoText.textContent = 'Cupom inválido.';
-          alerta.classList.add("d-none"); // esconde o alerta se inválido
-        }
+    if (valorCupom === "NOOK") {
+      descontoCupom = 0.7;
+      alerta.classList.remove("d-none");
+      alerta.classList.add("show");
 
+      setTimeout(() => {
+        alerta.classList.add("d-none");
+        alerta.classList.remove("show");
+      }, 5000);
+    } else {
+      descontoCupom = 0;
+      descontoText.textContent = 'Cupom inválido.';
+      alerta.classList.add("d-none");
+    }
+
+    calcularTotal();
+  }
+
+  qtd1.addEventListener('input', calcularTotal);
+  qtd2.addEventListener('input', calcularTotal);
+  qtd3.addEventListener('input', calcularTotal);
+
+  calcularTotal(); // Inicializa com valores zerados
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // impede o envio tradicional do formulário
+
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+    const email = document.getElementById('email').value;
+    const endereco = document.getElementById('endereco').value;
+    const obs = document.getElementById('obs').value;
+
+    const qtdCappuccino = parseInt(qtd1.value || 0);
+    const qtdExpresso = parseInt(qtd2.value || 0);
+    const qtdCafeGelado = parseInt(qtd3.value || 0);
+
+    const totalPedido = total.textContent;
+
+    const pedido = {
+      nome,
+      telefone,
+      email,
+      endereco,
+      obs,
+      itens: {
+        cappuccino: qtdCappuccino,
+        expresso: qtdExpresso,
+        cafeGelado: qtdCafeGelado
+      },
+      cupomAplicado: descontoCupom > 0 ? '1' : '0',
+      total: totalPedido
+    };
+
+    fetch('processar_pedido.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(pedido),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Pedido realizado com sucesso!');
+        form.reset();
         calcularTotal();
+        descontoText.textContent = '';
+      } else {
+        alert('Erro ao processar o pedido.');
+        console.error(data.message);
       }
-
-      qtd1.addEventListener('input', calcularTotal);
-      qtd2.addEventListener('input', calcularTotal);
-      qtd3.addEventListener('input', calcularTotal);
-      </script> 
+    })
+    .catch(error => {
+      alert('Erro ao enviar o pedido.');
+      console.error(error);
+    });
+  });
+</script>
 </body>
 </html>
