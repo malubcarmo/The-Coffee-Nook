@@ -183,27 +183,29 @@
       ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
       : '';
   }
+      function aplicarCupom() {
+      const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
 
-  function aplicarCupom() {
-    const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
+      if (valorCupom === "NOOK") {
+        descontoCupom = 0.7;
+        alerta.classList.remove("d-none");
+        alerta.classList.add("show");
+        document.getElementById('cupomAplicado').value = '1'; // Marca o cupom como aplicado
 
-    if (valorCupom === "NOOK") {
-      descontoCupom = 0.7;
-      alerta.classList.remove("d-none");
-      alerta.classList.add("show");
-
-      setTimeout(() => {
+        setTimeout(() => {
+          alerta.classList.add("d-none");
+          alerta.classList.remove("show");
+        }, 5000);
+      } else {
+        descontoCupom = 0;
+        descontoText.textContent = 'Cupom inválido.';
         alerta.classList.add("d-none");
-        alerta.classList.remove("show");
-      }, 5000);
-    } else {
-      descontoCupom = 0;
-      descontoText.textContent = 'Cupom inválido.';
-      alerta.classList.add("d-none");
+        document.getElementById('cupomAplicado').value = '0'; // Marca como não aplicado
+      }
+
+      calcularTotal();
     }
 
-    calcularTotal();
-  }
 
   qtd1.addEventListener('input', calcularTotal);
   qtd2.addEventListener('input', calcularTotal);
@@ -240,31 +242,34 @@
       cupomAplicado: descontoCupom > 0 ? '1' : '0',
       total: totalPedido
     };
-
     fetch('processar_pedido.php', {
-      method: 'POST',
-      headers: {
+    method: 'POST',
+    headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(pedido),
+    },
+    body: JSON.stringify({
+        nome: nome,
+        telefone: telefone,
+        email: email,
+        endereco: endereco,
+        obs: observacoes,
+        qtd1: qtd1,
+        qtd2: qtd2,
+        qtd3: qtd3,
+        cupomAplicado: cupomAplicado
+    })
     })
     .then(response => response.json())
     .then(data => {
-      if (data.success) {
-        alert('Pedido realizado com sucesso!');
-        form.reset();
-        calcularTotal();
-        descontoText.textContent = '';
-      } else {
-        alert('Erro ao processar o pedido.');
-        console.error(data.message);
-      }
+        if (data.success) {
+            console.log("Pedido salvo com sucesso!", data);
+        } else {
+            console.log("Erro ao salvar pedido:", data.message);
+        }
     })
     .catch(error => {
-      alert('Erro ao enviar o pedido.');
-      console.error(error);
+        console.error('Erro ao enviar pedido:', error);
     });
-  });
 </script>
 </body>
 </html>
