@@ -63,6 +63,28 @@ section {
   object-fit: cover;
 }
 
+/* Efeito hover nos slides */
+.carousel-item a {
+  display: block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item a:hover {
+  transform: scale(1.01);
+}
+
+/* Cursor pointer para indicar que é clicável */
+.carousel-item {
+  cursor: pointer;
+}
+
+/* Manter acessibilidade */
+.carousel-item a:focus {
+  outline: 2px solid var(--bs-brown);
+  outline-offset: 2px;
+}
+
 /* Ajustes para mobile */
 @media (max-width: 768px) {
   .carousel-inner {
