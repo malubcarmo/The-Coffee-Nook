@@ -1,18 +1,21 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "the_coffee_nook";
+$servername = 'localhost';
+$dbname = 'the_coffee_nook';
+$username = 'root';
+$password = '';
 
 // Ativa exibição de erros
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Inicia o buffer de saída
+ob_start();
+
 // Conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+    die(json_encode(["success" => false, "message" => "Falha na conexão: " . $conn->connect_error]));
 }
 
 // Cabeçalhos
@@ -23,6 +26,10 @@ header("Content-Type: application/json");
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
     // Lê o JSON bruto do corpo da requisição
     $json = file_get_contents("php://input");
+    // Grava no log (apenas para testes)
+    file_put_contents("log.txt", $json);
+    
+    // Decodifica o JSON
     $data = json_decode($json, true);
 
     if (!$data) {
@@ -49,29 +56,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SERVER['CONTENT_TYPE']) && 
     $preco2ComDesconto = 2.70;
     $preco3 = 14.00;
 
+    // Preço final com ou sem desconto para o produto 2
+    $preco2Final = $usarCupom ? $preco2ComDesconto : $preco2;
+
     // Cálculo
     $total1 = $preco1 * $qtd1;
-    $total2 = ($usarCupom ? $preco2ComDesconto : $preco2) * $qtd2;
+    $total2 = $preco2Final * $qtd2;
     $total3 = $preco3 * $qtd3;
     $totalPedido = $total1 + $total2 + $total3;
 
-    // Insere no banco
+    // Prepara o SQL
     $sql = "INSERT INTO pedidos (nome, telefone, email, endereco, observacoes, qtd1, qtd2, qtd3, preco1, preco2, preco3, total, cupom_usado)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // Prepara a declaração
     $stmt = $conn->prepare($sql);
+
     if ($stmt === false) {
         error_log("Erro na preparação do SQL: " . $conn->error);
         echo json_encode(["success" => false, "message" => "Erro na preparação da consulta"]);
         exit;
     }
 
-    $stmt->bind_param("ssssssiiiddddi",
+    // Passa os parâmetros por referência
+    $cupomUsado = $usarCupom ? 1 : 0; // Atribuímos 1 ou 0 para o cupom
+
+    // Passa os parâmetros para o bind_param
+    $stmt->bind_param("sssssiiiddddi",
         $nome, $telefone, $email, $endereco, $observacoes,
         $qtd1, $qtd2, $qtd3,
-        $preco1, $usarCupom ? $preco2ComDesconto : $preco2, $preco3,
-        $totalPedido, $usarCupom ? 1 : 0
+        $preco1, $preco2Final, $preco3, 
+        $totalPedido, $cupomUsado
     );
 
+    // Executa a consulta
     if ($stmt->execute()) {
         echo json_encode(["success" => true, "message" => "Pedido salvo com sucesso!", "pedido_id" => $stmt->insert_id]);
     } else {
@@ -81,8 +99,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SERVER['CONTENT_TYPE']) && 
 
     $stmt->close();
     $conn->close();
+
 } else {
     error_log("Requisição inválida ou tipo de conteúdo incorreto.");
     echo json_encode(["success" => false, "message" => "Requisição inválida ou tipo de conteúdo incorreto."]);
 }
+
+// Captura todos os erros do buffer
+file_put_contents('erro_log_php.txt', ob_get_clean());
 ?>

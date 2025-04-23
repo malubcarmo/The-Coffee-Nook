@@ -1,0 +1,1 @@
+{"nome":"malu","telefone":"9999999999","email":"malu@malu","endereco":"aleatorio","obs":"guardanapo","qtd1":"2","qtd2":"3","qtd3":"3","cupomAplicado":1,"total":"74.10"}

@@ -120,6 +120,7 @@
       <label for="obs" class="form-label">Observações</label>
       <textarea class="form-control" id="obs" name="obs" rows="3"></textarea>
     </div>
+
   <!-- Campos ocultos com as quantidades dos produtos -->
     <input type="hidden" id="qtd1" name="qtd1" value="0">
     <input type="hidden" id="qtd2" name="qtd2" value="0">
@@ -183,29 +184,29 @@
       ? `Você economizou R$ ${descontoAplicado.toFixed(2)} com o cupom "NOOK"!`
       : '';
   }
-      function aplicarCupom() {
-      const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
 
-      if (valorCupom === "NOOK") {
-        descontoCupom = 0.7;
-        alerta.classList.remove("d-none");
-        alerta.classList.add("show");
-        document.getElementById('cupomAplicado').value = '1'; // Marca o cupom como aplicado
+  function aplicarCupom() {
+    const valorCupom = document.getElementById('cupom').value.trim().toUpperCase();
 
-        setTimeout(() => {
-          alerta.classList.add("d-none");
-          alerta.classList.remove("show");
-        }, 5000);
-      } else {
-        descontoCupom = 0;
-        descontoText.textContent = 'Cupom inválido.';
+    if (valorCupom === "NOOK") {
+      descontoCupom = 0.7;
+      alerta.classList.remove("d-none");
+      alerta.classList.add("show");
+      document.getElementById('cupomAplicado').value = '1'; // Marca o cupom como aplicado
+
+      setTimeout(() => {
         alerta.classList.add("d-none");
-        document.getElementById('cupomAplicado').value = '0'; // Marca como não aplicado
-      }
-
-      calcularTotal();
+        alerta.classList.remove("show");
+      }, 5000);
+    } else {
+      descontoCupom = 0;
+      descontoText.textContent = 'Cupom inválido.';
+      alerta.classList.add("d-none");
+      document.getElementById('cupomAplicado').value = '0'; // Marca como não aplicado
     }
 
+    calcularTotal();
+  }
 
   qtd1.addEventListener('input', calcularTotal);
   qtd2.addEventListener('input', calcularTotal);
@@ -222,50 +223,40 @@
     const endereco = document.getElementById('endereco').value;
     const obs = document.getElementById('obs').value;
 
-    const qtdCappuccino = parseInt(qtd1.value || 0);
-    const qtdExpresso = parseInt(qtd2.value || 0);
-    const qtdCafeGelado = parseInt(qtd3.value || 0);
-
-    const totalPedido = total.textContent;
-
     const pedido = {
       nome,
       telefone,
       email,
       endereco,
       obs,
-      itens: {
-        cappuccino: qtdCappuccino,
-        expresso: qtdExpresso,
-        cafeGelado: qtdCafeGelado
-      },
-      cupomAplicado: descontoCupom > 0 ? '1' : '0',
-      total: totalPedido
+      qtd1: qtd1.value,  // Usando diretamente qtd1, qtd2 e qtd3
+      qtd2: qtd2.value,
+      qtd3: qtd3.value,
+      cupomAplicado: descontoCupom > 0 ? 1 : 0,
+      total: total.textContent
     };
 
-      fetch('processar_pedido.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(pedido),
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          alert('Pedido realizado com sucesso!');
-          form.reset();
-          calcularTotal();
-          descontoText.textContent = '';
-        } else {
-          alert('Erro ao processar o pedido.');
-          console.error(data.message);
-        }
-      })
-      .catch(error => {
-        alert('Erro ao enviar o pedido.');
-        console.error(error);
-      });
+    fetch('processar_pedido.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(pedido),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Resposta do PHP:", data); // <-- Adicionado para debug
+
+      if (data.success) {
+        alert('Pedido realizado com sucesso!');
+        form.reset();
+        calcularTotal();
+        descontoText.textContent = '';
+      } else {
+        alert('Erro ao processar o pedido: ' + data.message); // <-- Mostra a mensagem real
+        console.error(data.message);
+      }
+    })
   });
 </script>
 </body>
