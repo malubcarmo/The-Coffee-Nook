@@ -131,9 +131,8 @@
     </div>
   </div>
 </form>
-
   </main>
-
+  
   <footer class="text-white py-3" style="background-color: #4a2314;">
     <div class="container text-center">
       <p class="m-0">&copy; 2025 The Coffee Nook. Todos os direitos reservados.</p>
