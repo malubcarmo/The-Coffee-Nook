@@ -85,6 +85,7 @@ section {
   outline-offset: 2px;
 }
 
+
 /* Ajustes para mobile */
 @media (max-width: 768px) {
   .carousel-inner {
