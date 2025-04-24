@@ -99,10 +99,6 @@ section {
   }
 }
 
-.borda-marrom {
-  border-color: #532f20 !important;
-}
-
 /* Aplica borda ao botão menu hambúrguer */
 .navbar-toggler {
   border: none;
@@ -120,15 +116,6 @@ section {
 .navbar-toggler:hover {
   border: 2px solid #3c1e0b;
   box-shadow: 0 0 6px rgba(60, 30, 11, 0.4);
-}
-
-/* Animação dos itens no menu */
-.menu-item {
-  transition: transform 0.3s ease;
-}
-
-.menu-item:hover {
-  transform: translateY(-5px);
 }
 
 /*ajuste para o título do cardápio */
@@ -157,11 +144,6 @@ section {
 .btn-custom:hover {
   background-color: #6F4E37;
   color: #f7e3d6;
-}
-
-.collapsing {
-  transition: none !important;
-  height: auto !important;
 }
 
 .navbar-collapse {
