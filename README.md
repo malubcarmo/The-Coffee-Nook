@@ -42,10 +42,8 @@ O site foi desenvolvido utilizando as seguintes tecnologias:
 - `index.html`: Página inicial do site.
 - `pedido.php`: Página de pedidos onde os clientes realizam suas escolhas.
 - `processar_pedido.php`: Script PHP que processa os pedidos recebidos e os armazena no banco de dados.
-- `confirmacao_pedido.php`: Script PHP que exibe para o cliente um resumo do pedido realizado.
-- `listar_pedido.php`: Script PHP para excluir, ou levar para a visualização do detalhamento do pedido.
-- `detalhar_pedido.php`: Script PHP que exibe os detalhes do pedido.
 - `style.css`: Arquivo de estilo para a aparência do site.
+- `validacao.js`: Arquivo para as funções do menu responsivo.
 
 ## Licença
 
