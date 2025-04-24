@@ -72,33 +72,29 @@
               <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
             </div>
             
-            <!-- Slides com links -->
+            <!-- Carrossel com banners -->
             <div class="carousel-inner rounded-3 overflow-hidden shadow-lg">
-              <!-- Slide 1 -->
+              <!-- Banner da promoção de café expresso -->
               <div class="carousel-item active">
                 <a href="pedido.php">
                   <img src="img/banner_desconto.png" 
                        class="d-block w-100 h-100 object-fit-cover" 
-                       alt="Promoções especiais">
+                       alt="Imagem clicável com o link para o nosso carinho. Imagem apresenta o cupom NOOK para ser utilizado na compra de um café expresso">
                 </a>
               </div>
               
-              <!-- Slide 2 -->
+              <!-- Banner principal -->
               <div class="carousel-item">
-                <a href="pedido.php">
                   <img src="img/banner_principal.png"
                        class="d-block w-100 h-100 object-fit-cover" 
-                       alt="Conheça nosso cardápio">
-                </a>
+                       alt="Imagem de um café com o nome The Coffee Nook - O melhor café do Rio">
               </div>
               
-              <!-- Slide 3 -->
+              <!-- Banner com anúncio de nova franquia -->
               <div class="carousel-item">
-                <a href="pedido.php">
                   <img src="img/banner_anuncio.png"
                        class="d-block w-100 h-100 object-fit-cover" 
                        alt="Venha nos visitar">
-                </a>
               </div>
             </div>
             
@@ -125,6 +121,7 @@
               preparar o seu café perfeito.
             </p>              
             <div class="row g-4 justify-content-center">
+              <!--Imagem do primeiro produto-->
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="card h-100 p-2 border-0 rounded-4 bg-coffee-light">
                   <img src="img/cards/card1.webp" class="card-img-top rounded-3" alt="Cappuccino">
@@ -134,17 +131,19 @@
                     </p>
                   </div>
                 </div>
-              </div>       
+              </div>
+              <!--Imagem do segundo produto-->   
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="card h-100 p-2 border-0 rounded-4 bg-coffee-light">
-                  <img src="img/cards/card2.webp" class="card-img-top rounded-3" alt="Expresso">
+                  <img src="img/cards/card2.webp" class="card-img-top rounded-3" alt="Café Expresso">
                   <div class="card-body text-coffee">
                     <p class="card-text">
                       <strong>Expresso:</strong> Pequeno na dose, gigante no sabor. Seu shot diário de energia e aroma.
                     </p>
                   </div>
                 </div>
-              </div>     
+              </div>
+              <!--Imagem do terceiro produto--> 
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="card h-100 p-2 border-0 rounded-4 bg-coffee-light">
                   <img src="img/cards/card3.webp" class="card-img-top rounded-3" alt="Café Gelado">
@@ -164,7 +163,7 @@
             <div class="coffee-card">
               <h2 class="text-center fw-bold mb-5">Onde nos encontrar</h2>      
               <div class="row align-items-start">
-                <!-- Mapa -->
+                <!-- Mapa interativo do Google Maps -->
                 <div class="col-md-6 mb-4 mb-md-0">
                   <div class="border border-3 border-coffee rounded-4 overflow-hidden" style="aspect-ratio: 4/3;">
                     <iframe
@@ -197,29 +196,32 @@
           </div>
         </section>
 
-       <!---formulário de contato--->
+       <!---Formulário de contato--->
        <section class="py-5 section-bg" id="contato">
         <div class="container">
           <h2 class="text-center fw-bold mb-4 text-coffee">Fale Conosco</h2>
           <p class="text-center text-secondary mb-5 px-4 px-md-5 custom-paragraph-width">
-            Tem alguma dúvida, sugestão ou quer fazer uma reserva? Preencha o formulário abaixo que entraremos em contato!
+            Tem alguma dúvida, sugestão ou quer fazer uma reserva? Preencha o formulário abaixo que entraremos em contato com você!
           </p>       
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="coffee-card p-4 p-md-5">
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/mwpokaro" method="POST">
                   <div class="row g-3">
+                    <!-- Nome -->
                     <div class="col-md-6">
                       <label for="name" class="form-label text-coffee">Nome completo</label>
-                      <input type="text" class="form-control bg-coffee-light border-coffee" id="name" required>
+                      <input type="text" name="name" class="form-control bg-coffee-light border-coffee" id="name" placeholder="Digite seu nome completo" required>
                     </div>
+                    <!-- Email -->
                     <div class="col-md-6">
-                      <label for="email" class="form-label text-coffee">E-mail</label>
-                      <input type="email" class="form-control bg-coffee-light border-coffee" id="email" required>
+                      <label for="email" class="form-label text-coffee">Email</label>
+                      <input type="email" name="email" class="form-control bg-coffee-light border-coffee" id="email" placeholder="Digite seu email" required>
                     </div>
+                    <!-- Assunto -->
                     <div class="col-12">
                       <label for="subject" class="form-label text-coffee">Assunto</label>
-                      <select class="form-select bg-coffee-light border-coffee" id="subject">
+                      <select name="subject" class="form-select bg-coffee-light border-coffee" id="subject">
                         <option selected>Selecione...</option>
                         <option>Reserva</option>
                         <option>Dúvida</option>
@@ -228,10 +230,17 @@
                         <option>Outro</option>
                       </select>
                     </div>
+                    <!-- Mensagem -->
                     <div class="col-12">
                       <label for="message" class="form-label text-coffee">Mensagem</label>
-                      <textarea class="form-control bg-coffee-light border-coffee" id="message" rows="5" required></textarea>
+                      <textarea name="message" class="form-control bg-coffee-light border-coffee" id="message" rows="5" placeholder="Digite a sua mensagem" required></textarea>
                     </div>
+                
+                    <!-- Campos ocultos -->
+                    <input type="hidden" name="_subject" value="Nova mensagem do site">
+                    <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+                
+                    <!-- Botão -->
                     <div class="col-12 text-center mt-4">
                       <button type="submit" class="btn btn-custom px-4 py-2">
                         <i class="bi bi-send-fill me-2"></i> Enviar Mensagem
@@ -239,6 +248,8 @@
                     </div>
                   </div>
                 </form>
+                
+                <!--Mensagem de indicação de formulário enviado-->
                 <div id="mensagem-sucesso" class="alert mt-3 d-none" role="alert" style="background-color: #d2b48c; color: #ffffff; border: 1px solid #532f20;
                   border-radius: 8px; font-weight: 500; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); max-width: 400px; margin: 0 auto;">
                   Mensagem enviada com sucesso!

@@ -1,1 +1,1 @@
-{"nome":"Maria Luiza","telefone":"888888888","email":"maria@luiza","endereco":"Dos sonhos","obs":"Teste.","qtd1":"2","qtd2":"2","qtd3":"2","cupomAplicado":1,"total":"57.40"}
+{"nome":"Mariana","telefone":"777777777","email":"mari@ana","endereco":"Teste","obs":"Teste 2","qtd1":"2","qtd2":"2","qtd3":"1","cupomAplicado":1,"total":"43.40"}
