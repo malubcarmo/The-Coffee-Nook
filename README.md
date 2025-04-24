@@ -50,7 +50,3 @@ O site foi desenvolvido utilizando as seguintes tecnologias:
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
-Desenvolvido por Maria Luiza e Guilherme, como parte do projeto de desenvolvimento do site para **The Coffee Nook**.
