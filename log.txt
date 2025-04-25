@@ -1,1 +1,1 @@
-{"nome":"Mariana","telefone":"777777777","email":"mari@ana","endereco":"Teste","obs":"Teste 2","qtd1":"2","qtd2":"2","qtd3":"1","cupomAplicado":1,"total":"43.40"}
+{"nome":"Mariana","telefone":"777777777","email":"mari@ana","endereco":"Teste","obs":"Teste 2","qtd1":"2","qtd2":"2","qtd3":"1","cupomAplicado":1,"total":"43.40"}2025-04-25 21:01:35 - Recebido: {"nome":"Guilherme","telefone":"77777777","email":"funciona@gmail.com","endereco":"Tomara que vá","obs":"Teste","qtd1":"2","qtd2":"2","qtd3":"2","cupomAplicado":0,"total":"70.00"}
